@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CapstoneCue: demo-day preflight and rehearsal workspace for capstone teams.">
+<title>CapstoneCue · Demo-day pitch</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+:root{color-scheme:light;--navy:#162d58;--blue:#416ee7;--ink:#172541;--muted:#7987a0;--line:#e4e9f2;--pale:#f4f6fb}
+*{box-sizing:border-box}body{margin:0;background:#edf0f6;color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;display:grid;place-items:center;padding:25px 20px 84px}
+.deck{width:min(1120px,100%)}.slide{position:relative;display:none;overflow:hidden;aspect-ratio:16/9;padding:6.2% 7.2%;border:1px solid #e0e5ee;border-radius:17px;background:#fff;box-shadow:0 20px 55px #1d315019}.slide.active{display:flex;flex-direction:column}.slide.dark{background:var(--navy);color:white;border-color:var(--navy)}.slide.dark:after{position:absolute;right:-10%;top:-49%;width:72%;aspect-ratio:1;content:'';border:1px solid #ffffff18;border-radius:50%;box-shadow:0 0 0 46px #ffffff08,0 0 0 95px #ffffff05;pointer-events:none}
+.topline{position:relative;z-index:1;display:flex;align-items:center;gap:8px;color:#6f86bf;font-size:clamp(8px,.8vw,11px);font-weight:700;letter-spacing:1.5px;text-transform:uppercase}.dark .topline{color:#c6d3f6}.brand-icon{width:25px;height:25px;display:grid;place-items:center;border-radius:8px;color:white;background:var(--blue);font-weight:800;font-size:12px}.dark .brand-icon{background:#7594ff}.slide-no{margin-left:auto;color:#97a3b8;font-size:9px;letter-spacing:1px}.dark .slide-no{color:#91a6ce}
+h1,h2,h3,p{position:relative;z-index:1}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-.035em}h1{max-width:760px;margin:8% 0 2%;font-size:clamp(35px,5.4vw,69px);line-height:1.03;font-weight:800}h2{margin:5.2% 0 1.6%;font-size:clamp(27px,3.2vw,43px);line-height:1.09;font-weight:750}h3{margin:0 0 9px;font-size:clamp(14px,1.5vw,19px)}p{margin:0;color:var(--muted);font-size:clamp(11px,1.28vw,16px);line-height:1.55}.dark p{color:#ced8ed}.subtitle{max-width:680px;font-size:clamp(15px,1.65vw,21px)}.accent{color:#91aaff}.gold{color:#f1c76f}
+.cover-tag{display:inline-flex;align-items:center;gap:7px;margin-top:7%;padding:9px 12px;border:1px solid #ffffff26;border-radius:30px;color:#d2def7;font-size:10px}.cover-tag i{width:7px;height:7px;border-radius:50%;background:#e4bd64}.cover-bottom{position:absolute;z-index:1;bottom:7%;left:7.2%;display:flex;align-items:center;gap:8px;color:#aebddd;font-size:10px}.cover-bottom span{width:22px;height:1px;background:#6d86b6}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4.5%;margin-top:4%;align-items:stretch}.problem-quote{padding:22px 24px;border-left:3px solid #5477df;background:#f6f8fc}.problem-quote strong{display:block;margin-bottom:9px;color:#263b68;font:700 clamp(17px,2vw,25px) Manrope;line-height:1.3}.problem-quote small{color:#8995a8;font-size:9px}.proof-pile{display:grid;grid-template-columns:1fr 1fr;gap:9px}.proof-pile div{min-height:63px;padding:12px;border:1px solid var(--line);border-radius:8px;background:#fff}.proof-pile b{display:block;color:#455875;font-size:11px}.proof-pile small{display:block;margin-top:5px;color:#9aa5b5;font-size:8px}.callout{margin-top:14px;padding:10px 12px;border-radius:7px;background:#f0f4ff;color:#6076b3;font-size:9px}.step-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:5.5%}.flow-step{position:relative;min-height:163px;padding:17px 16px;border-top:3px solid #5376e3;background:#f7f8fc}.flow-step:nth-child(2){border-color:#25a27d}.flow-step:nth-child(3){border-color:#d89b3c}.flow-step>small{color:#a3adbd;font-size:8px;font-weight:700;letter-spacing:1px}.flow-step h3{margin-top:19px;color:#2b3c5d}.flow-step p{font-size:10px}.flow-step>span{position:absolute;right:15px;top:13px;color:#ccd4e2;font:700 24px Manrope}
+.landscape{display:grid;grid-template-columns:1fr 1fr;gap:0 25px;margin-top:3.5%}.landscape div{min-height:58px;padding:10px 0;border-bottom:1px solid var(--line)}.landscape b{display:block;margin-bottom:4px;color:#40516d;font-size:10px}.landscape span{color:#8b97a8;font-size:9px;line-height:1.4}.positioning{display:flex;align-items:center;gap:12px;margin-top:15px;padding:13px 15px;border-radius:8px;background:#edf2ff;color:#5870b4;font-size:10px;line-height:1.45}.positioning strong{color:#334b86}.sources{position:absolute;left:7.2%;bottom:5%;max-width:86%;color:#a3adbb;font-size:7px}.sources a{color:#7888a6}
+.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:5%}.model-col{padding:18px 20px;background:#f6f8fc}.model-col>small{color:#8294c2;font-size:8px;font-weight:700;letter-spacing:1px}.model-col h3{margin:10px 0;color:#344560}.model-col p{font-size:10px}.model-col ul{margin:9px 0 0;padding-left:16px;color:#7d8ba0;font-size:9px;line-height:1.7}.hypothesis{margin-top:14px;color:#9c8246;font-size:8px}
+.evidence-layout{display:grid;grid-template-columns:1fr .85fr;gap:5%;margin-top:3.8%}.evidence-list{display:grid;align-content:start;gap:10px}.evidence-item{display:flex;gap:10px;align-items:flex-start}.evidence-item i{width:7px;height:7px;margin-top:4px;border-radius:50%;background:#6581d8;flex:0 0 auto}.evidence-item b{display:block;color:#3c4c65;font-size:10px}.evidence-item span{display:block;margin-top:4px;color:#929dad;font-size:9px;line-height:1.4}.ask-card{padding:17px 18px;background:#f1f4fc;border-left:3px solid #5074dc}.ask-card>small{color:#7288c3;font-size:8px;font-weight:700;letter-spacing:1px}.ask-card h3{margin:10px 0;color:#30436a}.ask-card ol{margin:8px 0 0;padding-left:18px;color:#697891;font-size:9px;line-height:1.7}.truth-note{margin-top:13px;color:#8895a9;font-size:8px;line-height:1.4}.nav{position:fixed;bottom:19px;display:flex;align-items:center;gap:12px;padding:8px 11px;border:1px solid #e0e5ee;border-radius:12px;background:#fff;box-shadow:0 6px 22px #26365217}.nav button{width:29px;height:29px;display:grid;place-items:center;border:0;border-radius:7px;background:#f2f4f8;color:#53627a;font-size:15px}.nav button:hover{background:#e7edff;color:#315bd3}.nav button:disabled{opacity:.4;cursor:default}.nav-count{min-width:48px;color:#71809a;text-align:center;font-size:9px;font-weight:700}.dots{display:flex;gap:4px}.dots button{width:7px;height:7px;padding:0;border:0;border-radius:6px;background:#dbe1ec}.dots button.active{width:19px;background:#5274dc}.nav a{display:grid;place-items:center;color:#53627a;text-decoration:none}.print-btn{width:auto!important;padding:0 9px!important;font:700 9px 'DM Sans'!important}
+@media(max-width:650px){body{padding:12px 9px 74px}.slide{padding:6.5%;border-radius:10px;min-height:calc((100vw - 18px)*.5625)}h1{font-size:clamp(28px,8vw,45px)}h2{font-size:clamp(21px,6vw,31px)}.two-col{gap:3%;margin-top:2.5%}.problem-quote{padding:11px}.problem-quote strong{font-size:13px}.proof-pile{gap:5px}.proof-pile div{min-height:50px;padding:7px}.proof-pile b{font-size:8px}.proof-pile small{font-size:6px}.callout{margin-top:6px;padding:6px;font-size:7px}.step-flow{gap:5px;margin-top:4%}.flow-step{min-height:120px;padding:9px}.flow-step h3{margin-top:12px;font-size:11px}.flow-step p{font-size:7px}.flow-step>span{right:7px;top:7px;font-size:17px}.landscape{gap:0 12px;margin-top:2%}.landscape div{min-height:45px;padding:6px 0}.landscape b{font-size:8px}.landscape span{font-size:7px}.positioning{margin-top:7px;padding:7px;font-size:7px}.sources{bottom:3%;font-size:5.5px}.model-grid{gap:6px;margin-top:3%}.model-col{padding:9px}.model-col h3{margin:5px 0;font-size:11px}.model-col p,.model-col ul{font-size:7px}.evidence-layout{gap:10px;margin-top:3%}.evidence-item{gap:5px}.evidence-item b{font-size:7px}.evidence-item span{font-size:6px}.ask-card{padding:8px}.ask-card h3{margin:5px 0;font-size:11px}.ask-card ol{font-size:7px}.truth-note{font-size:6px}.nav{bottom:9px;gap:7px;padding:6px}.nav button{width:25px;height:25px}.nav-count{min-width:36px}.cover-tag{margin-top:5%;padding:6px 9px;font-size:7px}.cover-bottom{bottom:6%;font-size:7px}}
+@media print{body{display:block;padding:0;background:white}.deck{width:100%}.slide,.slide.active{display:flex!important;width:100%;height:100vh;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;page-break-after:always;break-after:page}.slide:last-child{page-break-after:auto}.nav{display:none!important}@page{size:landscape;margin:0}}
+</style>
+</head>
+<body>
+<main class="deck" aria-label="CapstoneCue demo-day pitch">
+<section class="slide dark active">
+  <div class="topline"><span class="brand-icon">C</span> CAPSTONECUE <span class="slide-no">01 / 06</span></div>
+  <h1>Rehearse the demo.<br><span class="accent">Prove the launch.</span></h1>
+  <p class="subtitle">A capstone demo-day preflight for the work behind your final three minutes.</p>
+  <div class="cover-tag"><i></i> Product hypothesis · early validation</div>
+  <div class="cover-bottom"><span></span> Six-slide draft · replace prompts with observed evidence before presenting</div>
+</section>
+<section class="slide">
+  <div class="topline"><span class="brand-icon">C</span> THE PROBLEM <span class="slide-no">02 / 06</span></div>
+  <h2>The build can be ready.<br><span style="color:#5272ce">The proof may still be scattered.</span></h2>
+  <p>A capstone review asks a student to show more than a running screen.</p>
+  <div class="two-col">
+    <div class="problem-quote"><strong>“Can I prove the app is live, the data saves, and the demo fits three minutes?”</strong><small>Project 5 submission requirements · user-provided brief</small></div>
+    <div class="proof-pile">
+      <div><b>Source code</b><small>Public repository and setup steps</small></div>
+      <div><b>Live product</b><small>Public URL responds for a reviewer</small></div>
+      <div><b>Database</b><small>A real change persists after refresh</small></div>
+      <div><b>Users & demo</b><small>Actual signups, slides, and rehearsal</small></div>
+    </div>
+  </div>
+  <div class="callout">Problem hypothesis: the final review handoff is fragmented. Student interviews are still needed to confirm how often this happens.</div>
+</section>
+<section class="slide">
+  <div class="topline"><span class="brand-icon">C</span> THE PRODUCT <span class="slide-no">03 / 06</span></div>
+  <h2>One preflight for the final handoff</h2>
+  <p>CapstoneCue connects technical checks with a practiced live demo.</p>
+  <div class="step-flow">
+    <div class="flow-step"><small>01 · COLLECT</small><span>01</span><h3>Keep the proof together</h3><p>Track each review requirement, status, and evidence link in a private workspace.</p></div>
+    <div class="flow-step"><small>02 · VERIFY</small><span>02</span><h3>Check the public surface</h3><p>Confirm the GitHub repo is public and the Vercel deployment responds.</p></div>
+    <div class="flow-step"><small>03 · REHEARSE</small><span>03</span><h3>Practice the three minutes</h3><p>Follow timed cues for the problem, workflow, persistence, user evidence, and ask.</p></div>
+  </div>
+  <div class="callout">A successful link check confirms reachability at one moment. It is not a security review or proof of product quality.</div>
+</section>
+<section class="slide">
+  <div class="topline"><span class="brand-icon">C</span> THE LANDSCAPE <span class="slide-no">04 / 06</span></div>
+  <h2>A narrow job beside existing tools</h2>
+  <p>CapstoneCue focuses on demo-day preflight and rehearsal, not general task planning.</p>
+  <div class="landscape">
+    <div><b>RubricTrail</b><span>Student assignment and evidence-linked planning. Close overlap to study.</span></div>
+    <div><b>GitHub Projects</b><span>Issues, boards, roadmaps, charts, and project planning.</span></div>
+    <div><b>Canvas rubrics</b><span>Instructor-facing assignment assessment and scoring.</span></div>
+    <div><b>LaunchProof</b><span>Existing security and launch-readiness product for AI-built apps; CapstoneCue uses a different name and scope.</span></div>
+  </div>
+  <div class="positioning"><strong>CapstoneCue’s bet:</strong> students need a last-mile place to verify the submission surface and rehearse a panel-ready demo. This positioning is unvalidated.</div>
+  <div class="sources">Sources: <a href="https://github.com/Sion612/rubrictrail" target="_blank" rel="noreferrer">RubricTrail</a> · <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects" target="_blank" rel="noreferrer">GitHub Projects</a> · <a href="https://community.instructure.com/en/kb/articles/661577-unknown" target="_blank" rel="noreferrer">Canvas rubrics</a> · <a href="https://trylaunchproof.com/" target="_blank" rel="noreferrer">LaunchProof</a></div>
+</section>
+<section class="slide">
+  <div class="topline"><span class="brand-icon">C</span> BUSINESS & LAUNCH <span class="slide-no">05 / 06</span></div>
+  <h2>Test value before setting a price</h2>
+  <p>Start with one student capstone and learn whether the last-mile workflow saves real preparation time.</p>
+  <div class="model-grid">
+    <div class="model-col"><small>ENTRY HYPOTHESIS</small><h3>Free individual workspace</h3><p>One project, evidence checklist, link preflight, and demo rehearsal.</p><ul><li>Self-serve signup</li><li>Public example pitch and run sheet</li><li>No paid plan until repeat use is clear</li></ul></div>
+    <div class="model-col"><small>EXPANSION HYPOTHESIS</small><h3>Team or mentor review</h3><p>Test whether small teams or program mentors need shared review notes and multiple projects.</p><ul><li>Ask teams how they coordinate review</li><li>Observe repeated use across a cohort</li><li>Test willingness to pay before building billing</li></ul></div>
+  </div>
+  <div class="hypothesis">Acquisition test: interview 3–5 recent capstone presenters, then share a tracked demo in one relevant student-builder community.</div>
+</section>
+<section class="slide">
+  <div class="topline"><span class="brand-icon">C</span> EVIDENCE & NEXT ASK <span class="slide-no">06 / 06</span></div>
+  <h2>Be precise about what is proven</h2>
+  <div class="evidence-layout">
+    <div class="evidence-list">
+      <div class="evidence-item"><i></i><div><b>Built in this prototype</b><span>Project checklist, public-link checks, database-backed account flow, six-slide pitch, and demo timer.</span></div></div>
+      <div class="evidence-item"><i></i><div><b>Not yet established</b><span>External student interviews, ten real users, repeat use, and willingness to pay.</span></div></div>
+      <div class="evidence-item"><i></i><div><b>Next milestone</b><span>Deploy with Supabase, observe five student setup sessions, and measure completed verified signups.</span></div></div>
+      <div class="truth-note">Replace this slide after deployment with the live URL, confirmed signup count, interview evidence, and current product gaps.</div>
+    </div>
+    <aside class="ask-card"><small>WHAT WOULD HELP NEXT</small><h3>Help test the demo-day workflow</h3><ol><li>Introductions to capstone students who presented recently.</li><li>A mentor to challenge the evidence and pricing assumptions.</li><li>Feedback on the three-minute demo before the next review.</li></ol></aside>
+  </div>
+</section>
+</main>
+<nav class="nav" aria-label="Slide controls"><button id="prev" aria-label="Previous slide">‹</button><span class="nav-count" id="counter" aria-live="polite">1 / 6</span><div class="dots" id="dots"></div><button id="next" aria-label="Next slide">›</button><a class="print-btn" href="/CapstoneCue-Demo-Day-Pitch.pptx" download>Download PPTX</a><button class="print-btn" onclick="window.print()">Print / PDF</button></nav>
+<script>
+const slides=Array.from(document.querySelectorAll('.slide'));const dots=document.getElementById('dots');let current=0;
+slides.forEach((_,index)=>{const button=document.createElement('button');button.setAttribute('aria-label','Go to slide '+(index+1));button.addEventListener('click',()=>show(index));dots.appendChild(button)});
+function show(index){current=Math.max(0,Math.min(slides.length-1,index));slides.forEach((slide,i)=>slide.classList.toggle('active',i===current));Array.from(dots.children).forEach((dot,i)=>dot.classList.toggle('active',i===current));document.getElementById('counter').textContent=(current+1)+' / '+slides.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===slides.length-1}
+document.getElementById('prev').addEventListener('click',()=>show(current-1));document.getElementById('next').addEventListener('click',()=>show(current+1));document.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key===' '){event.preventDefault();show(current+1)}if(event.key==='ArrowLeft'){event.preventDefault();show(current-1)}if(event.key.toLowerCase()==='p')window.print()});show(0);
+</script>
+</body>
+</html>
+
